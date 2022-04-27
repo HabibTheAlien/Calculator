@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        h1{
+            text-align: center;
+        }
+        #card{
+            max-width: 350px;
+            box-sizing: border-box;
+            text-align: center;
+            box-shadow: 0 4px 5px 0 black;
+            margin: 0 auto;
+            transition: 0.2s;
+            font-size: 0;
+        
+        }
+        #card:hover{
+            box-shadow: 0 16px 32px 0;
+        }
+        #result{
+            font-size: 32px;
+            letter-spacing: 2px;
+            width: 335px;
+            height: 100px;
+            font-weight: bold;
+            padding: 0 5px;
+        }
+        .btn{
+            width: 87px;
+            height: 70px;
+            font-size: 18px;
+            color: white;
+            background-color: black;
+        }
+        .btn:hover{
+            background-color: rgb(6, 255, 6);
+        
+        }
+    
+        .btn-style{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1><br>
+    <div id="card">
+        <div class="calc-heder">
+        <input type="text" id="result" maxlength="16" readonly="">
+        </div>
+        <div>
+            <input type="button" class="btn" style="background-color: rgb(50, 231, 14)" value="C" onclick="clearResult()">
+            <input type="button" class="btn" value="+/-" onclick="insertNumber('+/-')">
+            <input type="button" class="btn" value="%" onclick="insertNumber('%')">
+            <input type="button" class="btn btn-style" value="/" onclick="insertNumber('/')">
+        </div>
+        <div>
+            <input type="button" class="btn" value="7" onclick="insertNumber(7)" >
+            <input type="button" class="btn" value="8" onclick="insertNumber(8)">
+            <input type="button" class="btn" value="9" onclick="insertNumber(9)">
+             <input type="button" class="btn btn-style" value="X" onclick="insertNumber('*')" >
+        </div>
+        <div>
+            <input type="button" class="btn" value="4" onclick="insertNumber(4)">
+            <input type="button" class="btn" value="5" onclick="insertNumber(5)">
+            <input type="button" class="btn" value="6" onclick="insertNumber(6)">
+            <input type="button" class="btn btn-style" value="-" onclick="insertNumber('-')">
+        </div>
+        <div>
+            <input type="button" class="btn" value="1" onclick="insertNumber(1)">
+            <input type="button" class="btn" value="2" onclick="insertNumber(2)">
+            <input type="button" class="btn" value="3" onclick="insertNumber(3)">
+            <input type="button" class="btn btn-style" value="+" onclick="insertNumber('+')">
+        </div>
+        <div>
+            <input type="button" class="btn" value="0" onclick="insertNumber(0)">
+            <input type="button" class="btn" value="." onclick="insertNumber('.')">
+            <input type="button" class="btn" value="DEL" onclick="deletNumbers()">
+            <input type="button" class="btn" style="background-color: orange;" value="=" onclick="calculate()">
+        </div>
+       
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        var resultField=$("#result");
+        function insertNumber(number){
+            var existingNumbers= resultField.val();
+            resultField.val(existingNumbers+ number)
+        }
+
+        function clearResult(){
+            resultField.val("");
+
+        }
+
+        function calculate(){
+        var result=eval(resultField.val()) 
+        resultField.val(result);
+
+        }
+        function deletNumbers(){
+        var presentValue= resultField.val();
+        if(presentValue!='')
+        resultField.val(resultField.val().slice(0,-1));
+        }
+
+    </script>
+</body>
+</html>
